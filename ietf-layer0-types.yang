@@ -426,7 +426,8 @@ module ietf-layer0-types {
 
   grouping wson-label-start-end {
     description
-      "Generic label for WSON links";
+      "The WSON label-start or label-end used to 
+      specify WSON label range.";
     choice grid-type {
       description
         "Label for DWDM or CWDM grid";
