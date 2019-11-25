@@ -12,7 +12,7 @@ module ietf-layer0-types {
        <mailto:zhenghaomian@huawei.com>
      
      Editor: Aihua Guo
-       <mailto:aihuaguo.ietf@gmail.com>
+       <mailto:aihuaguo@futurewei.com>
 
      Editor: Young Lee
        <mailto:younglee.tx@gmail.com>
@@ -40,12 +40,11 @@ module ietf-layer0-types {
      Legal Provisions Relating to IETF Documents
      (http://trustee.ietf.org/license-info).";
 
-  revision "2019-10-18" {
+  revision "2019-11-25" {
     description
       "Initial Version";
     reference
-      "RFC XXXX: A YANG Data Model for WSON (Wavelength Switched
-       Optical Networks)";
+      "RFC XXXX: A YANG Data Model for Layer 0 Types";
   }
 
   typedef operational-mode {
@@ -53,7 +52,7 @@ module ietf-layer0-types {
     description
       "Vendor-specific mode that guarantees interoperability.
        It must be an string with the following format:
-       B-DScW-ytz(v) where all these attributes are conformant
+       B-DScW-ytz(v) where all these attributes are conforming
        to the ITU-T recommendation";
     reference "ITU-T G.698.2 (11/2009) Section 5.3";
   }
@@ -67,11 +66,11 @@ module ietf-layer0-types {
 
   typedef frequency-thz {
     type decimal64 {
-      fraction-digits 3;
+      fraction-digits 6;
     }
     units THz;
     description
-      "The DWDM frequency in THz, e.g., 193.12500";
+      "The DWDM frequency in THz, e.g., 193.112500";
     reference
       "RFC6205: Generalized Labels for 
       Lambda-Switch-Capable (LSC) Label Switching Routers";
@@ -79,11 +78,11 @@ module ietf-layer0-types {
 
   typedef frequency-ghz {
     type decimal64 {
-      fraction-digits 1;
+      fraction-digits 3;
     }
     units GHz;
     description
-      "The DWDM frequency in GHz, e.g., 193125.00";
+      "The DWDM frequency in GHz, e.g., 193112.500";
     reference
       "RFC6205: Generalized Labels for 
       Lambda-Switch-Capable (LSC) Label Switching Routers";
@@ -97,9 +96,9 @@ module ietf-layer0-types {
       central frequency.
 
       The nominal central frequency, 'f' is defined by,
-      f = 193.125 THz + N x 0.00625 THz,
-      where 193.125 THz is the ITU-T 'anchor frequency' for
-      transmission over the C band.    ";
+      f = 193100.000 GHz + N x 6.250 GHz,
+      where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
+      frequency' for transmission over the C band.    ";
   }
   
   typedef cwdm-n
@@ -119,9 +118,9 @@ module ietf-layer0-types {
       central frequency.
 
       The nominal central frequency, 'f' is defined by,
-        f = 193.125 THz + N x 0.00625 THz,
-      where 193.125 THz is the ITU-T 'anchor frequency' for
-      transmission over the C band.    ";
+      f = 193100.000 GHz + N x 6.250 GHz,
+      where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
+      frequency' for transmission over the C band.    ";
   }
 
   identity layer0-node-type {
@@ -425,7 +424,7 @@ module ietf-layer0-types {
     }
   }
 
-  grouping wson-link-label {
+  grouping wson-label-start-end {
     description
       "Generic label for WSON links";
     choice grid-type {
@@ -454,9 +453,9 @@ module ietf-layer0-types {
     }
   }
 
-  grouping wson-path-label {
+  grouping wson-label-hop {
     description
-      "Generic label for WSON paths";
+      "Generic label hop information for WSON";
     choice grid-type {
       description
         "Label for DWDM or CWDM grid";
@@ -481,9 +480,9 @@ module ietf-layer0-types {
                 central frequency.
 
                 The nominal central frequency, 'f', is defined by,
-                f = 193.1 THz + N x 'channel spacing (THz)',
-                where 193.1 THz is the ITU-T 'anchor frequency' for
-                transmission over the C band, 
+                f = 193100.000 GHz + N x 6.250 GHz,
+                where 193100.000 GHz (193.100000 THz) is the ITU-T   
+                'anchor frequency' for transmission over the C band. 
                 N is a positive or negative integer including 0";
               reference 
                 "ITU-T Recommendation G.694.1: Spectral girds for 
@@ -507,7 +506,7 @@ module ietf-layer0-types {
     }
   }
 
-  grouping layer0-label-restriction {
+  grouping layer0-label-range-info {
     description
       "layer0 label restriction.";
 
@@ -535,7 +534,7 @@ module ietf-layer0-types {
           }
           description
             "Label-step is the channel-spacing (GHz), e.g.,
-             100, 50, 25, or 12.5 GHz for DWDM";
+             100.000, 50.000, 25.000, or 12.500 GHz for DWDM";
           reference
             "RFC6205: Generalized Labels for 
              Lambda-Switch-Capable (LSC) Label Switching Routers";
@@ -591,7 +590,7 @@ module ietf-layer0-types {
     }
   }
 
-  grouping flexi-grid-link-label {
+  grouping flexi-grid-label-start-end {
     description "Flexi-grid link label.";
     leaf flexi-n {
       type int16;
@@ -607,7 +606,7 @@ module ietf-layer0-types {
   grouping flexi-grid-channel {
     description "Flexi-grid channel grouping.";
 
-    uses flexi-grid-link-label;
+    uses flexi-grid-label-start-end;
 
     leaf flexi-m {
       type uint16 {
@@ -615,7 +614,7 @@ module ietf-layer0-types {
       }
       description
         "M is used to determine the slot width. A slot width is 
-         constrained to be M x SWG (that is, M x 12.5 GHz), 
+         constrained to be M x SWG (that is, M x 12.500 GHz), 
          where M is a positive integer.";
       reference
         "RFC7698: Framework and Requirements for GMPLS-Based Control
@@ -623,7 +622,7 @@ module ietf-layer0-types {
         Networks";
     }
   }
-  grouping flexi-grid-path-label {
+  grouping flexi-grid-label-hop {
     description "Flexi-grid path label.";
       choice single-or-super-channel {
        description "single of super channel";
@@ -645,7 +644,7 @@ module ietf-layer0-types {
   grouping flexi-grid-label-restriction {
     description
       "Flexi-grid-specific label restriction";
-    uses layer0-label-restriction;
+    uses layer0-label-range-info;
 
     container flexi-grid {
       description "flexi-grid definition";
@@ -656,7 +655,7 @@ module ietf-layer0-types {
         default flexi-ch-spc-6p25ghz;
         description
           "It is the spacing between allowed nominal central
-           frequencies. Default is 6.25 GHz";
+           frequencies. Default is 6.250 GHz";
         reference
           "RFC7698: Framework and Requirements for GMPLS-Based Control
           of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
@@ -670,7 +669,7 @@ module ietf-layer0-types {
         default flexi-swg-12p5ghz;
         description
           "Minimum space between slot widths. Default is 
-           12.5 GHz";
+           12.500 GHz";
         reference
           "RFC7698: Framework and Requirements for GMPLS-Based Control
           of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
