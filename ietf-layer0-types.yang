@@ -96,7 +96,7 @@ module ietf-layer0-types {
       central frequency.
 
       The nominal central frequency, 'f' is defined by,
-      f = 193100.000 GHz + N x 6.250 GHz,
+      f = 193100.000 GHz + N x 12.500 GHz,
       where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
       frequency' for transmission over the C band.    ";
   }
@@ -472,19 +472,10 @@ module ietf-layer0-types {
           }
           case super {
            leaf-list subcarrier-dwdm-n {
-              type int16;
+              type layer0-types:dwdm-n;
               description
-                "List of subcarrier channels for the super channel.
-
-                The given value 'N' for each subcarrier channel
-                is used to determine the nominal
-                central frequency.
-
-                The nominal central frequency, 'f', is defined by,
-                f = 193100.000 GHz + N x 6.250 GHz,
-                where 193100.000 GHz (193.100000 THz) is the ITU-T   
-                'anchor frequency' for transmission over the C band. 
-                N is a positive or negative integer including 0";
+                "List of center frequencies for each subcarrier 
+                 channels.";
               reference 
                 "ITU-T Recommendation G.694.1: Spectral girds for 
                 WDM applications: DWDM frequency grid";
