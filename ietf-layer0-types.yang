@@ -40,7 +40,7 @@ module ietf-layer0-types {
      Legal Provisions Relating to IETF Documents
      (http://trustee.ietf.org/license-info).";
 
-  revision "2019-11-25" {
+  revision "2019-11-28" {
     description
       "Initial Version";
     reference
@@ -633,9 +633,9 @@ module ietf-layer0-types {
       }
   }
 
-  grouping flexi-grid-label-restriction {
+  grouping flexi-grid-label-range-info {
     description
-      "Flexi-grid-specific label restriction";
+      "Info of Flexi-grid-specific label range";
     uses layer0-label-range-info;
 
     container flexi-grid {
