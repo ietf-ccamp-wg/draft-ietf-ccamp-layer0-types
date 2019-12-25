@@ -1,6 +1,7 @@
 module ietf-layer0-types {
+  yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-layer0-types";
-  prefix "layer0-types";
+  prefix "l0-types";
 
   organization
     "IETF CCAMP Working Group";
@@ -43,7 +44,7 @@ module ietf-layer0-types {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision "2019-11-28" {
+  revision "2019-12-25" {
     description
       "Initial Version";
     reference
@@ -60,32 +61,7 @@ module ietf-layer0-types {
     reference "ITU-T G.698.2 (11/2018) Section 5.3";
   }
 
-  typedef frequency-thz {
-    type decimal64 {
-      fraction-digits 6;
-    }
-    units THz;
-    description
-      "The DWDM frequency in THz, e.g., 193.112500";
-    reference
-      "RFC6205: Generalized Labels for 
-      Lambda-Switch-Capable (LSC) Label Switching Routers";
-  }
-
-  typedef frequency-ghz {
-    type decimal64 {
-      fraction-digits 3;
-    }
-    units GHz;
-    description
-      "The DWDM frequency in GHz, e.g., 193112.500";
-    reference
-      "RFC6205: Generalized Labels for 
-      Lambda-Switch-Capable (LSC) Label Switching Routers";
-  }
-  
-  typedef dwdm-n
-  {
+  typedef dwdm-n {
     type int16;
     description
       "The given value 'N' is used to determine the nominal
@@ -100,8 +76,7 @@ module ietf-layer0-types {
       Lambda-Switch-Capable (LSC) Label Switching Routers";
   }
   
-  typedef cwdm-n
-  {
+  typedef cwdm-n {
     type int16;
     description
       "The given value 'N' is used to compute the channel
@@ -112,13 +87,11 @@ module ietf-layer0-types {
       Lambda-Switch-Capable (LSC) Label Switching Routers";
   }
   
-  typedef flexi-n
-  {
+  typedef flexi-n {
     type int16;
     description
       "The given value 'N' is used to determine the nominal
       central frequency.
-
       The nominal central frequency, 'f' is defined by,
       f = 193100.000 GHz + N x 6.250 GHz,
       where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
@@ -128,10 +101,22 @@ module ietf-layer0-types {
       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
       Networks";
   }
+  
+  typedef flexi-m {
+    type int16;
+    description
+      "M is used to determine the slot width. A slot width is 
+       constrained to be M x SWG (that is, M x 12.500 GHz), 
+       where M is a positive integer. ";
+    reference
+      "RFC7698: Framework and Requirements for GMPLS-Based Control
+      of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
+      Networks";
+  }
 
   identity layer0-node-type {
     description
-      "layer0 node type.";
+      "layer 0 node type.";
     reference
       "RFC6163:Framework for GMPLS and Path Computation Element 
       (PCE) Control of Wavelength Switched Optical Networks (WSONs)";
@@ -242,19 +227,19 @@ module ietf-layer0-types {
       "Physical layer termination";
   }
 
-  identity term-otu {
+  identity term-OTU {
     base term-type;
     description
       "OTU (Optical Transport Unit) termination";
   }
 
-  identity term-odu {
+  identity term-ODU {
     base term-type;
     description
       "ODU (Optical Data Unit) termination";
   }
 
-  identity term-opu {
+  identity term-OPU {
     base term-type;
     description
       "OPU (Optical Payload Unit) termination";
@@ -273,67 +258,67 @@ module ietf-layer0-types {
       "ITU-T G.709: Interfaces for the Optical Transport Network";
   }
 
-  identity bw-otu1 {
+  identity bw-OTU1 {
     base layer0-bandwidth-type;
     description
       "OTU1 (2.66G)";
   }
 
-  identity bw-otu1e {
+  identity bw-OTU1e {
     base layer0-bandwidth-type;
     description
       "OTU1e (11.04G)";
   }
 
-  identity bw-otu1f {
+  identity bw-OTU1f {
     base layer0-bandwidth-type;
     description
       "OTU1f (11.27G)";
   }
 
-  identity bw-otu2 {
+  identity bw-OTU2 {
     base layer0-bandwidth-type;
     description
       "OTU2 (10.70G)";
   }
 
-  identity bw-otu2e {
+  identity bw-OTU2e {
     base layer0-bandwidth-type;
     description
       "OTU2e (11.09G)";
   }
 
-  identity bw-otu2f {
+  identity bw-OTU2f {
     base layer0-bandwidth-type;
     description
       "OTU2f (11.31G)";
   }
 
-  identity bw-otu3 {
+  identity bw-OTU3 {
     base layer0-bandwidth-type;
     description
       "OTU3 (43.01G)";
   }
 
-  identity bw-otu3e1 {
+  identity bw-OTU3e1 {
     base layer0-bandwidth-type;
     description
       "OTU3e1 (44.57G)";
   }
 
-  identity bw-otu3e2 {
+  identity bw-OTU3e2 {
     base layer0-bandwidth-type;
     description
       "OTU3e2 (44.58G)";
   }
 
-  identity bw-otu4 {
+  identity bw-OTU4 {
     base layer0-bandwidth-type;
     description
       "OTU4 (111.80G)";
   }
 
-  identity bw-otucn {
+  identity bw-OTUCn {
     base layer0-bandwidth-type;
     description
       "OTUCn (beyond 100G)";
@@ -473,7 +458,7 @@ module ietf-layer0-types {
         "Label for DWDM or CWDM grid";
       case dwdm {
         leaf dwdm-n {
-          type layer0-types:dwdm-n;
+          type l0-types:dwdm-n;
           description
            "The central frequency of DWDM. ";
           reference
@@ -483,7 +468,7 @@ module ietf-layer0-types {
       }
       case cwdm {
         leaf cwdm-n {
-          type layer0-types:cwdm-n;
+          type l0-types:cwdm-n;
           description
             "Channel wavelength computing input. ";
           reference
@@ -508,29 +493,27 @@ module ietf-layer0-types {
           description "single or super channel";
           case single {
             leaf dwdm-n {
-              type layer0-types:dwdm-n;
+              type l0-types:dwdm-n;
               description
                "The central frequency of DWDM. ";
              }
           }
           case super {
            leaf-list subcarrier-dwdm-n {
-              type layer0-types:dwdm-n;
+              type l0-types:dwdm-n;
               description
                 "List of center frequencies for each subcarrier 
                  channels.";
               reference 
-                "ITU-T Recommendation G.694.1: Spectral girds for 
+                "ITU-T Recommendation G.694.1: Spectral grids for 
                 WDM applications: DWDM frequency grid";
-
            }
           }
         }
-
       }
       case cwdm {
         leaf cwdm-n {
-          type layer0-types:cwdm-n;
+          type l0-types:cwdm-n;
           description
             "Channel wavelength computing input. ";
           reference
@@ -546,7 +529,7 @@ module ietf-layer0-types {
 
   grouping layer0-label-range-info {
     description
-      "Information for layer0 label range.";
+      "Information for layer 0 label range.";
 
     leaf grid-type {
       type identityref {
@@ -556,7 +539,10 @@ module ietf-layer0-types {
     }
     leaf priority {
       type uint8;
-      description "Priority";
+      description 
+        "Priority in Interface Switching Capability 
+        Descriptor (ISCD).";
+      reference "RFC4203.";
     }
     reference
       "RFC6205: Generalized Labels for 
@@ -603,7 +589,7 @@ module ietf-layer0-types {
   grouping flexi-grid-node-attributes {
     description "Flexi-grid node attributes";
     container flexi-grid-node {
-      description "Flexi-grid node attrtibutes";
+      description "Flexi-grid node attributes";
       leaf node-type {
         type identityref {
           base layer0-node-type;
@@ -649,7 +635,7 @@ module ietf-layer0-types {
     description 
       "Label-start and Label-end information for Flexi-grid.";
     leaf flexi-n {
-      type int16;
+      type l0-types:flexi-n;
       description
         "The central frequency in Flexi-grid.";
     }
@@ -661,18 +647,13 @@ module ietf-layer0-types {
 
   grouping flexi-grid-channel {
     description "Flexi-grid channel grouping.";
-
     uses flexi-grid-label-start-end;
-
     leaf flexi-m {
-      type uint16 {
-        range "1..max";
-      }
+      type l0-types:flexi-m;
       description
         "M is used to determine the slot width. A slot width is 
          constrained to be M x SWG (that is, M x 12.500 GHz), 
          where M is a positive integer.";
-      
     }
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
@@ -706,7 +687,6 @@ module ietf-layer0-types {
     description
       "Info of Flexi-grid-specific label range";
     uses layer0-label-range-info;
-
     container flexi-grid {
       description "flexi-grid definition";
       leaf nominal-central-frequency-granularity {
@@ -736,7 +716,6 @@ module ietf-layer0-types {
           of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
           Networks";
       }
-      
       leaf min-slot-width-factor {
         type uint16 {
           range "1..max";
@@ -763,7 +742,6 @@ module ietf-layer0-types {
           "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
           Dense Wavelength Division Multiplexing (DWDM) Networks";
       }
-
     }
   }
 
