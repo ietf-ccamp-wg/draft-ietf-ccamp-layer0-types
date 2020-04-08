@@ -222,7 +222,9 @@ module ietf-layer0-types {
       "RFC6163:Framework for GMPLS and Path Computation Element 
       (PCE) Control of Wavelength Switched Optical Networks (WSONs),
       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
-      DWDM frequency grid";
+      DWDM frequency grid,
+      ITU-T G.694.2 (12/2003): Spectral grids for WDM applications: 
+      CWDM wavelength grid";
   }
 
   identity flexi-grid-dwdm {
