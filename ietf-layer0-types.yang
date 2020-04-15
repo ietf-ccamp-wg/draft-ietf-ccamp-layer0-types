@@ -31,7 +31,7 @@ module ietf-layer0-types {
      Division Multiplexing) and DWDM (Dense Wavelength Division
      Multiplexing)) and Flexi-grid Optical Networks.
 
-     Copyright (c) 2019 IETF Trust and the persons identified
+     Copyright (c) 2020 IETF Trust and the persons identified
      as authors of the code.  All rights reserved.
 
      Redistribution and use in source and binary forms, with
@@ -44,21 +44,11 @@ module ietf-layer0-types {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision "2020-01-27" {
+  revision "2020-04-15" {
     description
       "Initial Version";
     reference
       "RFC XXXX: A YANG Data Model for Layer 0 Types";
-  }
-
-  typedef operational-mode {
-    type string;
-    description
-      "Vendor-specific mode that guarantees interoperability.
-       It must be an string with the following format:
-       B-DScW-ytz(v) where all these attributes are conforming
-       to the ITU-T recommendation";
-    reference "ITU-T G.698.2 (11/2018) Section 5.3";
   }
 
   typedef dwdm-n {
@@ -67,7 +57,7 @@ module ietf-layer0-types {
       "The given value 'N' is used to determine the nominal
       central frequency.
       The nominal central frequency, 'f' is defined by,
-      f = 193100.000 GHz + N x 12.500 GHz,
+      f = 193100.000 GHz + N x channel-spacing (measured in GHz),
       where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
       frequency' for transmission over the C band.    ";
     reference
@@ -96,7 +86,7 @@ module ietf-layer0-types {
       "The given value 'N' is used to determine the nominal
       central frequency.
       The nominal central frequency, 'f' is defined by,
-      f = 193100.000 GHz + N x 6.250 GHz,
+      f = 193100.000 GHz + N x channel-spacing (measured in GHz),
       where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
       frequency' for transmission over the C band.    ";
     reference
@@ -112,99 +102,14 @@ module ietf-layer0-types {
     description
       "M is used to determine the slot width. A slot width is 
        constrained to be M x SWG (that is, M x 12.500 GHz), 
-       where M is a positive integer. ";
+       where M is a positive integer. 
+	   Noted that the 12.500GHz is the 2 x channel-spacing (6.25G)";
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
       Networks. 
       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
       DWDM frequency grid";
-  }
-
-  identity layer0-node-type {
-    description
-      "layer 0 node type.";
-    reference
-      "RFC6163:Framework for GMPLS and Path Computation Element 
-      (PCE) Control of Wavelength Switched Optical Networks (WSONs),
-      ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
-      DWDM frequency grid";
-  }
-
-  identity flexi-grid-node {
-    base layer0-node-type;
-    description
-      "Flexi-grid node";
-    reference
-      "RFC7698: Framework and Requirements for GMPLS-Based Control
-      of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
-      Networks.
-      ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
-      DWDM frequency grid";
-  }
-
-  identity wson-node-foadm {
-    base layer0-node-type;
-    description
-      "Fixed OADM (Optical Add-Drop Multiplexer) node";
-    reference
-      "RFC6163:Framework for GMPLS and Path Computation Element 
-      (PCE) Control of Wavelength Switched Optical Networks (WSONs),
-      ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
-      DWDM frequency grid";
-  }
-
-  identity wson-node-roadm {
-    base layer0-node-type;
-    description
-      "ROADM (Reconfigurable Optical Add-Drop Multiplexer)
-       or OXC (Optical Cross Connect) node";
-    reference
-      "RFC6163:Framework for GMPLS and Path Computation Element 
-      (PCE) Control of Wavelength Switched Optical Networks (WSONs),
-      ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
-      DWDM frequency grid";
-  }
-
-  identity wson-node-ila {
-    base layer0-node-type;
-    description
-      "ILA (In-Line Amplifier) node";
-    reference
-      "RFC6163:Framework for GMPLS and Path Computation Element 
-      (PCE) Control of Wavelength Switched Optical Networks (WSONs),
-      ITU-T G.698.2 (11/2018): Amplified multichannel dense 
-      wavelength division multiplexing applications with single 
-      channel optical interfaces";
-  }
-
-  identity wavelength-assignment {
-    description
-      "Wavelength selection base";
-    reference
-      "RFC6163:Framework for GMPLS and Path Computation Element 
-      (PCE) Control of Wavelength Switched Optical Networks (WSONs)";
-  }
-
-  identity unspecified-wavelength-assignment {
-    base wavelength-assignment;
-    description
-      "No method specified";
-  }
-
-  identity first-fit-wavelength-assignment {
-    base wavelength-assignment;
-    description
-      "All the available wavelengths are numbered,
-       and this WA (Wavelength Assignment) method chooses
-       the available wavelength with the lowest index";
-  }
-
-  identity random-wavelength-assignment {
-    base wavelength-assignment;
-    description
-      "This WA method chooses an available
-       wavelength randomly";
   }
 
   identity least-loaded-wavelength-assignment {
@@ -215,7 +120,7 @@ module ietf-layer0-types {
        link along the route (in multi-fiber networks)";
   }
 
-  identity layer0-grid-type {
+  identity l0-grid-type {
     description
       "Layer 0 grid type";
     reference
@@ -228,7 +133,7 @@ module ietf-layer0-types {
   }
 
   identity flexi-grid-dwdm {
-    base layer0-grid-type;
+    base l0-grid-type;
     description
       "Flexi-grid";
     reference
@@ -240,7 +145,7 @@ module ietf-layer0-types {
   }
 
   identity wson-grid-dwdm {
-    base layer0-grid-type;
+    base l0-grid-type;
     description
       "DWDM grid";
     reference
@@ -251,7 +156,7 @@ module ietf-layer0-types {
   }
 
   identity wson-grid-cwdm {
-    base layer0-grid-type;
+    base l0-grid-type;
     description
       "CWDM grid";
     reference
@@ -259,153 +164,6 @@ module ietf-layer0-types {
       Lambda-Switch-Capable (LSC) Label Switching Routers,
       ITU-T G.694.2 (12/2003): Spectral grids for WDM applications: 
       CWDM wavelength grid";
-  }
-
-  identity term-type {
-    description
-      "Termination type";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity term-phys {
-    base term-type;
-    description
-      "Physical layer termination";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity term-OTU {
-    base term-type;
-    description
-      "OTU (Optical Transport Unit) termination";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity term-ODU {
-    base term-type;
-    description
-      "ODU (Optical Data Unit) termination";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity term-OPU {
-    base term-type;
-    description
-      "OPU (Optical Payload Unit) termination";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity term-section {
-    base term-type;
-    description
-      "Section layer termination";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity layer0-bandwidth-type {
-    description
-      "Bandwidth type carried by a single wavelength channel";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity bw-OTU1 {
-    base layer0-bandwidth-type;
-    description
-      "OTU1 (2.66G)";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity bw-OTU1e {
-    base layer0-bandwidth-type;
-    description
-      "OTU1e (11.04G)";
-    reference
-      "ITU-T G.sup43: Transport of IEEE 10GBASE-R in optical
-       transport networks (OTN)";
-  }
-
-  identity bw-OTU1f {
-    base layer0-bandwidth-type;
-    description
-      "OTU1f (11.27G)";
-    reference
-      "ITU-T G.sup43: Transport of IEEE 10GBASE-R in optical
-       transport networks (OTN)";
-  }
-
-  identity bw-OTU2 {
-    base layer0-bandwidth-type;
-    description
-      "OTU2 (10.70G)";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity bw-OTU2e {
-    base layer0-bandwidth-type;
-    description
-      "OTU2e (11.09G)";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity bw-OTU2f {
-    base layer0-bandwidth-type;
-    description
-      "OTU2f (11.31G)";
-    reference
-      "ITU-T G.sup43: Transport of IEEE 10GBASE-R in optical
-       transport networks (OTN)";
-  }
-
-  identity bw-OTU3 {
-    base layer0-bandwidth-type;
-    description
-      "OTU3 (43.01G)";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity bw-OTU3e1 {
-    base layer0-bandwidth-type;
-    description
-      "OTU3e1 (44.57G)";
-    reference
-      "ITU-T G.sup43: Transport of IEEE 10GBASE-R in optical
-       transport networks (OTN)";
-  }
-
-  identity bw-OTU3e2 {
-    base layer0-bandwidth-type;
-    description
-      "OTU3e2 (44.58G)";
-    reference
-      "ITU-T G.sup43: Transport of IEEE 10GBASE-R in optical
-       transport networks (OTN)";
-  }
-
-  identity bw-OTU4 {
-    base layer0-bandwidth-type;
-    description
-      "OTU4 (111.80G)";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity bw-OTUCn {
-    base layer0-bandwidth-type;
-    description
-      "OTUCn (beyond 100G)";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
   }
 
   identity dwdm-ch-spc-type {
@@ -486,59 +244,7 @@ module ietf-layer0-types {
       "20nm channel spacing";
   }
 
-  identity fec-type {
-    description
-      "FEC (Forward Error Correction) type";
-    reference
-      "ITU-T G.709: Interfaces for the Optical Transport Network";
-  }
-
-  identity g-fec {
-    base fec-type;
-    description
-      "G-FEC (Generic-FEC)";
-  }
-  identity e-fec {
-    base fec-type;
-    description
-      "E-FEC (Enhanced-FEC)";
-  }
-  identity no-fec {
-    base fec-type;
-    description
-      "No FEC";
-  }
-
   /* Groupings. */
-  grouping wson-path-bandwidth {
-    description 
-      "WSON (Wavelength Switched Optical Network)
-       path bandwidth attributes";
-    leaf bandwidth-type {
-      type identityref {
-        base layer0-bandwidth-type;
-      }
-      description "WSON bandwidth type";
-    }
-    reference
-      "RFC6163:Framework for GMPLS and Path Computation Element 
-      (PCE) Control of Wavelength Switched Optical Networks (WSONs)";
-  }
-
-  grouping wson-link-bandwidth {
-    description 
-      "WSON link bandwidth attributes";
-    leaf-list supported-bandwidth-list {
-      type identityref {
-        base layer0-bandwidth-type;
-      }
-      description "WSON bandwidth type";
-    }
-    reference
-      "RFC6163:Framework for GMPLS and Path Computation Element 
-      (PCE) Control of Wavelength Switched Optical Networks (WSONs)";
-  }
-
   grouping wson-label-start-end {
     description
       "The WSON label-start or label-end used to 
@@ -617,13 +323,13 @@ module ietf-layer0-types {
       Lambda-Switch-Capable (LSC) Label Switching Routers";
   }
 
-  grouping layer0-label-range-info {
+  grouping l0-label-range-info {
     description
       "Information for layer 0 label range.";
 
     leaf grid-type {
       type identityref {
-        base layer0-grid-type;
+        base l0-grid-type;
       }
       description "Grid type";
     }
@@ -641,7 +347,7 @@ module ietf-layer0-types {
 
   grouping wson-label-step {
     description "Label step information for WSON";
-    choice layer0-grid-type {
+    choice l0-grid-type {
       description
         "Grid type: DWDM, CWDM, etc.";
       case dwdm {
@@ -678,51 +384,6 @@ module ietf-layer0-types {
       CWDM wavelength grid";
   }
 
-  grouping flexi-grid-node-attributes {
-    description "Flexi-grid node attributes";
-    container flexi-grid-node {
-      description "Flexi-grid node attributes";
-      leaf node-type {
-        type identityref {
-          base layer0-node-type;
-        }
-        description "Flexi-grid node type";
-      }
-    }
-    reference
-      "RFC7698: Framework and Requirements for GMPLS-Based Control
-      of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
-      Networks";
-  }
-
-  grouping flexi-grid-path-bandwidth {
-    description "Flexi-grid path bandwidth attributes";
-    leaf bandwidth-type {
-      type identityref {
-        base layer0-bandwidth-type;
-      }
-      description "Flexi-grid bandwidth type";
-    }
-    reference
-      "RFC7698: Framework and Requirements for GMPLS-Based Control
-      of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
-      Networks";
-  }
-
-  grouping flexi-grid-link-bandwidth {
-    description "flexi-grid link bandwidth attributes";
-    leaf-list supported-bandwidth-list {
-      type identityref {
-        base layer0-bandwidth-type;
-      }
-      description "Flexi-grid bandwidth type";
-    }
-    reference
-      "RFC7698: Framework and Requirements for GMPLS-Based Control
-      of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
-      Networks";
-  }
-
   grouping flexi-grid-label-start-end {
     description 
       "Label-start and Label-end information for Flexi-grid.";
@@ -737,8 +398,8 @@ module ietf-layer0-types {
       Networks";
   }
 
-  grouping flexi-grid-channel {
-    description "Flexi-grid channel grouping.";
+  grouping flexi-grid-frequency-slot {
+    description "Flexi-grid frequency slot grouping.";
     uses flexi-grid-label-start-end;
     leaf flexi-m {
       type l0-types:flexi-m;
@@ -757,12 +418,12 @@ module ietf-layer0-types {
       choice single-or-super-channel {
        description "single of super channel";
         case single {
-          uses flexi-grid-channel;
+          uses flexi-grid-frequency-slot;
        }
         case super {
          list subcarrier-flexi-n {
          key flexi-n;
-         uses flexi-grid-channel;
+         uses flexi-grid-frequency-slot;
          description
             "List of subcarrier channels for flexi-grid
              super channel.";
@@ -778,7 +439,7 @@ module ietf-layer0-types {
   grouping flexi-grid-label-range-info {
     description
       "Info of Flexi-grid-specific label range";
-    uses layer0-label-range-info;
+    uses l0-label-range-info;
     container flexi-grid {
       description "flexi-grid definition";
       leaf nominal-central-frequency-granularity {
@@ -814,8 +475,12 @@ module ietf-layer0-types {
         }
         default 1;
         description
-          "Minimum slot width is calculated by:
-             Minimum slot width (GHz) = 
+          "Slot width range: two multipliers of the slot width ,
+           granularity, each indicating the minimal and maximal slot 
+           width supported by a port, respectively. 
+		  
+		   Minimum slot width is calculated by:
+           Minimum slot width (GHz) = 
                min-slot-width-factor * slot-width-granularity";
         reference
           "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
@@ -827,8 +492,12 @@ module ietf-layer0-types {
           range "1..max";
         }
         description
-          "Maximum slot width is calculated by:
-             Maximum slot width (GHz) = 
+          "Slot width range: two multipliers of the slot width ,
+           granularity, each indicating the minimal and maximal slot 
+           width supported by a port, respectively.
+		   
+		   Maximum slot width is calculated by:
+           Maximum slot width (GHz) = 
                max-slot-width-factor * slot-width-granularity";
         reference
           "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
