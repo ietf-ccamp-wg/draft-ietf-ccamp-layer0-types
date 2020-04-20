@@ -120,14 +120,6 @@ module ietf-layer0-types {
       DWDM frequency grid";
   }
 
-  identity least-loaded-wavelength-assignment {
-    base wavelength-assignment;
-    description
-      "This WA method selects the wavelength that
-       has the largest residual capacity on the most loaded
-       link along the route (in multi-fiber networks)";
-  }
-
   identity l0-grid-type {
     description
       "Layer 0 grid type";
