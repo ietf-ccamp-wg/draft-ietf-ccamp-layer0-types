@@ -251,6 +251,7 @@ module ietf-layer0-types {
   }
 
   /* Groupings. */
+  
   grouping wson-label-start-end {
     description
       "The WSON label-start or label-end used to 
