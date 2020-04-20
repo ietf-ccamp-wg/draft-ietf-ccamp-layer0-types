@@ -485,9 +485,9 @@ module ietf-layer0-types {
           "Slot width range: two multipliers of the slot width ,
            granularity, each indicating the minimal and maximal slot 
            width supported by a port, respectively. 
-		  
-		   Minimum slot width is calculated by:
-           Minimum slot width (GHz) = 
+
+           Minimum slot width is calculated by:
+             Minimum slot width (GHz) = 
                min-slot-width-factor * slot-width-granularity";
         reference
           "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
