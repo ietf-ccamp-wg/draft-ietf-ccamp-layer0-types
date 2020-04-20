@@ -73,7 +73,10 @@ module ietf-layer0-types {
     description
       "The given value 'N' is used to compute the channel
       wavelength as per the formula:
-        Wavelength (nm) = 1471 + N x 20 ";
+        Wavelength (nm) = 1471 + N x channel-spacing (measured in nm),
+      where 1471 nm is the ITU-T 'anchor wavelength'
+        for transmission over the C band; and
+      where 'channel-spacing' is defined by the cwdm-ch-spc-type. ";
     reference
       "RFC6205: Generalized Labels for 
       Lambda-Switch-Capable (LSC) Label Switching Routers,
