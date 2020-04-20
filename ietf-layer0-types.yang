@@ -108,8 +108,7 @@ module ietf-layer0-types {
     description
       "M is used to determine the slot width. A slot width is 
        constrained to be M x SWG (that is, M x 12.500 GHz), 
-       where M is a positive integer. 
-	   Noted that the 12.500GHz is the 2 x channel-spacing (6.25G)";
+       where M is a positive integer.";
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
