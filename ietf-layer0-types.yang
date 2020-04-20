@@ -87,7 +87,7 @@ module ietf-layer0-types {
       "The given value 'N' is used to determine the nominal
       central frequency.
       The nominal central frequency, 'f' is defined by,
-      f = 193100.000 GHz + N x channel-spacing (measured in GHz),
+        f = 193100.000 GHz + N x channel-spacing (measured in GHz),
       where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
       frequency' for transmission over the C band.    ";
     reference
