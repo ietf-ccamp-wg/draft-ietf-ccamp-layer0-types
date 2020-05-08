@@ -510,9 +510,18 @@ module ietf-layer0-types {
     leaf flexi-n-step {
       type uint8;
       description
-        "The restriction of flexi-n must be certain multipliers 
-          of channel-spacing. This is called the central frequency
-          granularity in RFC8363. ";
+        "This attribute defines the granularity of supported values
+		     for the nominal central frequency as a multiplier of the 
+		     channel-spacing.
+
+        For example, given a grid with a nominal central frequency 
+	    	granularity of 6.25 GHz, the granularity of the supported 
+	      values of the nominal central frequency could be 12.5 GHz. 
+		    In this case, the values of flexi-n should be even and this 
+		    constraints is reported by setting the flexi-n-step to 2.
+
+        This attribute is also known as central frequency granularity
+        in RFC8363. ";
       reference
         "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
          Dense Wavelength Division Multiplexing (DWDM) Networks";
