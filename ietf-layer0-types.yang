@@ -44,7 +44,7 @@ module ietf-layer0-types {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision "2020-05-08" {
+  revision "2020-05-09" {
     description
       "Initial Version";
     reference
@@ -299,7 +299,7 @@ module ietf-layer0-types {
               type l0-types:dwdm-n;
               description
                 "The given value 'N' is used to determine the
-                 nominal central frequency."
+                 nominal central frequency.";
             }
           }
           case super {
@@ -461,9 +461,9 @@ module ietf-layer0-types {
           "Minimum space between slot widths. Default is 
            12.500 GHz";
         reference
-          "RFC7698: Framework and Requirements for GMPLS-Based Control
-          of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
-          Networks";
+          "RFC7698: Framework and Requirements for GMPLS-Based
+           Control of Flexi-Grid Dense Wavelength Division 
+           Multiplexing (DWDM) Networks";
       }
       leaf min-slot-width-factor {
         type uint16 {
@@ -528,8 +528,8 @@ module ietf-layer0-types {
          In this case, the values of flexi-n should be even and this 
          constraints is reported by setting the flexi-n-step to 2.
 
-         This attribute is also known as central frequency granularity
-         in RFC8363.";
+         This attribute is also known as central frequency
+         granularity in RFC8363.";
       reference
         "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
          Dense Wavelength Division Multiplexing (DWDM) Networks";
