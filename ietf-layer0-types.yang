@@ -426,7 +426,7 @@ module ietf-layer0-types {
     description "Flexi-grid path label.";
 
     choice single-or-super-channel {
-      description "single of super channel";
+      description "single or super channel";
       case single {
         uses flexi-grid-frequency-slot;
       }
