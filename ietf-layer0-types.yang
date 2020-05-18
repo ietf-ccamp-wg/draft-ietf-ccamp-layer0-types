@@ -1,6 +1,7 @@
 module ietf-layer0-types {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-layer0-types";
+
   prefix "l0-types";
 
   organization
@@ -44,7 +45,7 @@ module ietf-layer0-types {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision "2020-05-09" {
+  revision "2020-05-16" {
     description
       "Initial Version";
     reference
@@ -347,7 +348,9 @@ module ietf-layer0-types {
       description 
         "Priority in Interface Switching Capability 
          Descriptor (ISCD).";
-      reference "RFC4203.";
+      reference
+        "RFC4203: OSPF Extensions in Support of Generalized
+         Multi-Protocol Label Switching (GMPLS).";
     }
     reference
       "RFC6205: Generalized Labels for 
