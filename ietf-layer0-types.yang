@@ -45,7 +45,7 @@ module ietf-layer0-types {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision "2020-05-19" {
+  revision "2020-07-16" {
     description
       "Initial Version";
     reference
@@ -262,6 +262,10 @@ module ietf-layer0-types {
         "Label for DWDM or CWDM grid";
       case dwdm {
         leaf dwdm-n {
+          when "../../../grid-type = 'wson-grid-dwdm'" {
+            description
+              "Valid only when grid type is DWDM.";
+          }
           type l0-types:dwdm-n;
           description
            "The central frequency of DWDM. ";
@@ -272,6 +276,10 @@ module ietf-layer0-types {
       }
       case cwdm {
         leaf cwdm-n {
+          when "../../../grid-type = 'wson-grid-cwdm'" {
+            description
+              "Valid only when grid type is CWDM.";
+          }
           type l0-types:cwdm-n;
           description
             "Channel wavelength computing input. ";
@@ -364,6 +372,10 @@ module ietf-layer0-types {
         "Grid type: DWDM, CWDM, etc.";
       case dwdm {
         leaf wson-dwdm-channel-spacing {
+          when "../../grid-type = 'wson-grid-dwdm'" {
+            description
+              "Valid only when grid type is DWDM.";
+          }
           type identityref {
             base dwdm-ch-spc-type;
           }
@@ -377,6 +389,10 @@ module ietf-layer0-types {
       }
       case cwdm {
         leaf wson-cwdm-channel-spacing {
+          when "../../grid-type = 'wson-grid-cwdm'" {
+            description
+              "Valid only when grid type is CWDM.";
+          }
           type identityref {
             base cwdm-ch-spc-type;
           }
