@@ -498,7 +498,9 @@ module ietf-layer0-types {
 
            Minimum slot width is calculated by:
              Minimum slot width (GHz) = 
-               min-slot-width-factor * slot-width-granularity";
+               min-slot-width-factor * slot-width-granularity. 
+           Minimum slot width should be smaller than or equal to 
+           Maximum slot width. ";
         reference
           "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
            Dense Wavelength Division Multiplexing (DWDM) Networks";
@@ -515,7 +517,9 @@ module ietf-layer0-types {
 
            Maximum slot width is calculated by:
              Maximum slot width (GHz) = 
-               max-slot-width-factor * slot-width-granularity";
+               max-slot-width-factor * slot-width-granularity
+           Maximum slot width should be bigger than or equal to 
+           Minimum slot width. ";
         reference
           "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
            Dense Wavelength Division Multiplexing (DWDM) Networks";
