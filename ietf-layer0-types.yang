@@ -481,7 +481,7 @@ module ietf-layer0-types {
 
   grouping flexi-grid-label-range-info {
     description
-      "Information about Flexi-grid-specific label range";
+      "Flexi-grid-specific label range related information";
     uses l0-label-range-info;
     container flexi-grid {
       description "flexi-grid definition";
