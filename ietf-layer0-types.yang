@@ -352,7 +352,7 @@ module ietf-layer0-types {
 
   grouping l0-label-range-info {
     description
-      "Information for layer 0 label range.";
+      "Information about layer 0 label range.";
     leaf grid-type {
       type identityref {
         base l0-grid-type;
@@ -481,7 +481,7 @@ module ietf-layer0-types {
 
   grouping flexi-grid-label-range-info {
     description
-      "Flexi-grid-specific label range related information";
+      "Information about Flexi-grid-specific label range";
     uses l0-label-range-info;
     container flexi-grid {
       description "flexi-grid definition";
