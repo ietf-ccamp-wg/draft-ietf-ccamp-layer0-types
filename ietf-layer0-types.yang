@@ -55,17 +55,18 @@ module ietf-layer0-types {
   typedef dwdm-n {
     type int16;
     description
-      "The given value 'N' is used to determine the nominal
-       central frequency.
+      "The given value 'N' is used to determine the nominal central
+       frequency.
 
        The nominal central frequency, 'f' is defined by:
-         f = 193100.000 GHz + N x channel-spacing (measured in GHz)
+         f = 193100.000 GHz + N x channel-spacing (measured in GHz),
+
        where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
-         frequency' for transmission over the C band; and
-       where 'channel-spacing' is defined by the dwdm-ch-spc-type.";
+       frequency' for transmission over the C band; and where
+       'channel-spacing' is defined by the dwdm-ch-spc-type.";
     reference
-      "RFC6205: Generalized Labels for 
-       Lambda-Switch-Capable (LSC) Label Switching Routers,
+      "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
+       Label Switching Routers,
        ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
        DWDM frequency grid";
   }
@@ -73,40 +74,42 @@ module ietf-layer0-types {
   typedef cwdm-n {
     type int16;
     description
-      "The given value 'N' is used to determine the nominal
-       central wavelength.
+      "The given value 'N' is used to determine the nominal central
+       wavelength.
 
        The nominal central wavelength is defined by:
          Wavelength = 1471 nm + N x channel-spacing (measured in nm)
+
        where 1471 nm is the ITU-T 'anchor wavelength' for
-         transmission over the C band; and
-       where 'channel-spacing' is defined by the cwdm-ch-spc-type.";
+       transmission over the C band; and where 'channel-spacing' is
+       defined by the cwdm-ch-spc-type.";
     reference
-      "RFC6205: Generalized Labels for 
-       Lambda-Switch-Capable (LSC) Label Switching Routers,
-       ITU-T G.694.2 (12/2003): Spectral grids for WDM applications: 
+      "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
+       Label Switching Routers,
+       ITU-T G.694.2 (12/2003): Spectral grids for WDM applications:
        CWDM wavelength grid";
   }
   
   typedef flexi-n {
     type int16;
     description
-      "The given value 'N' is used to determine the nominal
-       central frequency.
+      "The given value 'N' is used to determine the nominal central
+       frequency.
 
        The nominal central frequency, 'f' is defined by,
          f = 193100.000 GHz + N x channel-spacing (measured in GHz),
+
        where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
-         frequency' for transmission over the C band; and
-       where 'channel-spacing' is defined by the flexi-ch-spc-type.
+       frequency' for transmission over the C band; and where
+       'channel-spacing' is defined by the flexi-ch-spc-type.
       
        Note that the term 'channel-spacing' can be alternated by the
        term 'nominal central frequency granularity' defined in
        clause 7 of ITU-T G.694.1.";
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
-       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
-       Networks. 
+       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM)
+       Networks.
        ITU-T G.694.1 (02/2012): Spectral grids for WDM applications:
        DWDM frequency grid";
   }
@@ -118,12 +121,13 @@ module ietf-layer0-types {
 
        A slot width is defined by:
          slot width = M x SWG (measured in GHz),
+
        where SWG is defined by the flexi-slot-width-granularity.";
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
-       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
-       Networks. 
-       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
+       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM)
+       Networks.
+       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications:
        DWDM frequency grid";
   }
 
@@ -133,9 +137,9 @@ module ietf-layer0-types {
     reference
       "RFC6163:Framework for GMPLS and Path Computation Element 
        (PCE) Control of Wavelength Switched Optical Networks (WSONs),
-       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
+       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications:
        DWDM frequency grid,
-       ITU-T G.694.2 (12/2003): Spectral grids for WDM applications: 
+       ITU-T G.694.2 (12/2003): Spectral grids for WDM applications:
        CWDM wavelength grid";
   }
 
@@ -145,9 +149,9 @@ module ietf-layer0-types {
       "Flexi-grid";
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
-       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
+       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM)
        Networks, 
-       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
+       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications:
        DWDM frequency grid";
   }
 
@@ -158,7 +162,7 @@ module ietf-layer0-types {
     reference
       "RFC6163:Framework for GMPLS and Path Computation Element 
        (PCE) Control of Wavelength Switched Optical Networks (WSONs),
-       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
+       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications:
        DWDM frequency grid";
   }
 
@@ -167,9 +171,9 @@ module ietf-layer0-types {
     description
       "CWDM grid";
     reference
-      "RFC6205: Generalized Labels for 
-       Lambda-Switch-Capable (LSC) Label Switching Routers,
-       ITU-T G.694.2 (12/2003): Spectral grids for WDM applications: 
+      "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
+       Label Switching Routers,
+       ITU-T G.694.2 (12/2003): Spectral grids for WDM applications:
        CWDM wavelength grid";
   }
 
@@ -177,9 +181,9 @@ module ietf-layer0-types {
     description
       "DWDM channel spacing type";
     reference
-      "RFC6205: Generalized Labels for 
-       Lambda-Switch-Capable (LSC) Label Switching Routers, 
-       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
+      "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
+       Label Switching Routers,
+       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications:
        DWDM frequency grid";
   }
 
@@ -212,9 +216,9 @@ module ietf-layer0-types {
       "Flexi-grid channel spacing type";
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
-       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
+       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM)
        Networks
-       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications: 
+       ITU-T G.694.1 (02/2012): Spectral grids for WDM applications:
        DWDM frequency grid";
   }
   
@@ -239,9 +243,9 @@ module ietf-layer0-types {
     description
       "CWDM channel spacing type";
     reference
-      "RFC6205: Generalized Labels for 
-       Lambda-Switch-Capable (LSC) Label Switching Routers,
-       ITU-T G.694.2 (12/2003): Spectral grids for WDM applications: 
+      "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
+	   Label Switching Routers,
+       ITU-T G.694.2 (12/2003): Spectral grids for WDM applications:
        CWDM wavelength grid";
   }
 
@@ -255,8 +259,8 @@ module ietf-layer0-types {
   
   grouping wson-label-start-end {
     description
-      "The WSON label-start or label-end used to 
-       specify WSON label range.";
+      "The WSON label-start or label-end used to specify WSON label
+       range.";
     choice grid-type {
       description
         "Label for DWDM or CWDM grid";
@@ -270,10 +274,10 @@ module ietf-layer0-types {
           }
           type l0-types:dwdm-n;
           description
-           "The central frequency of DWDM. ";
+           "The central frequency of DWDM.";
           reference
-            "RFC6205: Generalized Labels for 
-             Lambda-Switch-Capable (LSC) Label Switching Routers";
+            "RFC6205: Generalized Labels for Lambda-Switch-Capable
+             (LSC) Label Switching Routers";
         }
       }
       case cwdm {
@@ -286,16 +290,16 @@ module ietf-layer0-types {
           }
           type l0-types:cwdm-n;
           description
-            "Channel wavelength computing input. ";
+            "Channel wavelength computing input.";
           reference
-            "RFC6205: Generalized Labels for 
-             Lambda-Switch-Capable (LSC) Label Switching Routers";
+            "RFC6205: Generalized Labels for Lambda-Switch-Capable
+             (LSC) Label Switching Routers";
         }
       }
     }
     reference
-      "RFC6205: Generalized Labels for 
-       Lambda-Switch-Capable (LSC) Label Switching Routers";
+      "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
+       Label Switching Routers";
   }
 
   grouping wson-label-hop {
@@ -336,19 +340,19 @@ module ietf-layer0-types {
             "The given value 'N' is used to determine the nominal
              central wavelength.";
           reference
-            "RFC6205: Generalized Labels for 
-             Lambda-Switch-Capable (LSC) Label Switching Routers";
+            "RFC6205: Generalized Labels for Lambda-Switch-Capable
+             (LSC) Label Switching Routers";
         }
       }
     }
     reference
-      "RFC6205: Generalized Labels for 
-      Lambda-Switch-Capable (LSC) Label Switching Routers";
+      "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
+       Label Switching Routers";
   }
 
   grouping l0-label-range-info {
     description
-      "Information for layer 0 label range.";
+      "Information about layer 0 label range.";
     leaf grid-type {
       type identityref {
         base l0-grid-type;
@@ -358,15 +362,15 @@ module ietf-layer0-types {
     leaf priority {
       type uint8;
       description 
-        "Priority in Interface Switching Capability 
-         Descriptor (ISCD).";
+        "Priority in Interface Switching Capability Descriptor
+         (ISCD).";
       reference
         "RFC4203: OSPF Extensions in Support of Generalized
          Multi-Protocol Label Switching (GMPLS).";
     }
     reference
-      "RFC6205: Generalized Labels for 
-       Lambda-Switch-Capable (LSC) Label Switching Routers";
+      "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
+       Label Switching Routers";
   }
 
   grouping wson-label-step {
@@ -386,11 +390,11 @@ module ietf-layer0-types {
             base dwdm-ch-spc-type;
           }
           description
-            "Label-step is the channel-spacing (GHz), e.g.,
-             100.000, 50.000, 25.000, or 12.500 GHz for DWDM";
+            "Label-step is the channel-spacing (GHz), e.g., 100.000,
+             50.000, 25.000, or 12.500 GHz for DWDM";
           reference
-            "RFC6205: Generalized Labels for 
-             Lambda-Switch-Capable (LSC) Label Switching Routers";
+            "RFC6205: Generalized Labels for Lambda-Switch-Capable
+             (LSC) Label Switching Routers";
         }
       }
       case cwdm {
@@ -408,22 +412,22 @@ module ietf-layer0-types {
             "Label-step is the channel-spacing (nm), i.e., 20 nm
              for CWDM, which is the only value defined for CWDM";
           reference
-            "RFC6205: Generalized Labels for 
-             Lambda-Switch-Capable (LSC) Label Switching Routers";
+            "RFC6205: Generalized Labels for Lambda-Switch-Capable
+             (LSC) Label Switching Routers";
         }
       }
     }
     reference
-      "RFC6205: Generalized Labels for 
-       Lambda-Switch-Capable (LSC) Label Switching Routers
+      "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
+       Label Switching Routers,
        ITU-T G.694.2 (12/2003): Spectral grids for WDM applications: 
        CWDM wavelength grid";
   }
 
   grouping flexi-grid-label-start-end {
     description
-      "The Flexi-grid label-start or label-end used to 
-       specify Flexi-grid label range.";
+      "The Flexi-grid label-start or label-end used to specify
+       Flexi-grid label range.";
     leaf flexi-n {
       type l0-types:flexi-n;
       description
@@ -432,7 +436,7 @@ module ietf-layer0-types {
     }
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
-       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
+       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM)
        Networks";
   }
 
@@ -446,7 +450,7 @@ module ietf-layer0-types {
     }
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
-       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
+       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM)
        Networks";
   }
 
@@ -464,20 +468,20 @@ module ietf-layer0-types {
           key flexi-n;
           uses flexi-grid-frequency-slot;
           description
-            "List of subcarrier channels for flexi-grid
-             super channel.";
+            "List of subcarrier channels for flexi-grid super
+             channel.";
         }
       }
     }
     reference
       "RFC7698: Framework and Requirements for GMPLS-Based Control
-       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) 
+       of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM)
        Networks";
   }
 
   grouping flexi-grid-label-range-info {
     description
-      "Info of Flexi-grid-specific label range";
+      "Flexi-grid-specific label range related information";
     uses l0-label-range-info;
     container flexi-grid {
       description "flexi-grid definition";
@@ -487,8 +491,8 @@ module ietf-layer0-types {
         }
         default flexi-swg-12p5ghz;
         description
-          "Minimum space between slot widths. Default is 
-           12.500 GHz";
+          "Minimum space between slot widths. Default is 12.500
+           GHz";
         reference
           "RFC7698: Framework and Requirements for GMPLS-Based
            Control of Flexi-Grid Dense Wavelength Division 
@@ -500,37 +504,42 @@ module ietf-layer0-types {
         }
         default 1;
         description
-          "Slot width range: two multipliers of the slot width ,
-           granularity, each indicating the minimal and maximal slot 
-           width supported by a port, respectively. 
+          "A multiplier of the slot width granularity, indicating
+           the minimum slot width supported by an optical port.
 
            Minimum slot width is calculated by:
              Minimum slot width (GHz) = 
-               min-slot-width-factor * slot-width-granularity. 
-           Minimum slot width should be smaller than or equal to 
-           Maximum slot width. ";
+               min-slot-width-factor * slot-width-granularity.";
         reference
-          "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
-           Dense Wavelength Division Multiplexing (DWDM) Networks";
+          "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-
+           Grid Dense Wavelength Division Multiplexing (DWDM)
+           Networks";
       }
 
       leaf max-slot-width-factor {
         type uint16 {
           range "1..max";
         }
+        must '. >= min-slot-width-factor' {
+          error-message
+            "Maximum slot width must be greater than or equal to
+             minimum slot width.";
+        }
         description
-          "Slot width range: two multipliers of the slot width ,
-           granularity, each indicating the minimal and maximal slot 
-           width supported by a port, respectively.
+          "A multiplier of the slot width granularity, indicating
+           the maximum slot width supported by an optical port.
 
            Maximum slot width is calculated by:
              Maximum slot width (GHz) = 
                max-slot-width-factor * slot-width-granularity
-           Maximum slot width should be bigger than or equal to 
-           Minimum slot width. ";
+
+           If specified, maximum slot width must be greater than or
+           equal to minimum slot width.If not specified, maximum
+           slot width is equal to minimum slot width.";
         reference
-          "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-Grid
-           Dense Wavelength Division Multiplexing (DWDM) Networks";
+          "RFC8363: GMPLS OSPF-TE Extensions in Support of Flexi-
+           Grid Dense Wavelength Division Multiplexing (DWDM)
+           Networks";
       }
     }
   }
@@ -543,11 +552,11 @@ module ietf-layer0-types {
       }
       default flexi-ch-spc-6p25ghz;
       description
-        "Label-step is the nominal central frequency
-         granularity (GHz), e.g., 6.25 GHz";
+        "Label-step is the nominal central frequency granularity
+         (GHz), e.g., 6.25 GHz";
       reference
-         "RFC7699: Generalized Labels for the Flexi-Grid in
-          Lambda Switch Capable (LSC) Label Switching Routers";
+         "RFC7699: Generalized Labels for the Flexi-Grid in Lambda
+          Switch Capable (LSC) Label Switching Routers";
     } 
     leaf flexi-n-step {
       type uint8;
@@ -557,9 +566,9 @@ module ietf-layer0-types {
 
          For example, given a grid with a nominal central frequency 
          granularity of 6.25 GHz, the granularity of the supported 
-         values of the nominal central frequency could be 12.5 GHz. 
+         values of the nominal central frequency could be 12.5 GHz.
          In this case, the values of flexi-n should be even and this 
-         constraints is reported by setting the flexi-n-step to 2.
+         constraint is reported by setting the flexi-n-step to 2.
 
          This attribute is also known as central frequency
          granularity in RFC8363.";
