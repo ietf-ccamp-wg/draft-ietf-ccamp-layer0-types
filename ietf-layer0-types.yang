@@ -45,7 +45,7 @@ module ietf-layer0-types {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision "2020-12-29" {
+  revision "2021-02-10" {
     description
       "Initial Version";
     reference
@@ -520,7 +520,7 @@ module ietf-layer0-types {
         type uint16 {
           range "1..max";
         }
-        must '. >= min-slot-width-factor' {
+        must '. >= ../min-slot-width-factor' {
           error-message
             "Maximum slot width must be greater than or equal to
              minimum slot width.";
