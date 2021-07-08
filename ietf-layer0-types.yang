@@ -45,7 +45,7 @@ module ietf-layer0-types {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision "2021-05-11" {
+  revision "2021-07-08" {
     description
       "Initial Version";
     reference
@@ -62,7 +62,7 @@ module ietf-layer0-types {
          f = 193100.000 GHz + N x channel-spacing (measured in GHz),
 
        where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
-       frequency' for transmission over the DWDM grid; and where
+       frequency' for transmission over the C band; and where
        'channel-spacing' is defined by the dwdm-ch-spc-type.";
     reference
       "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
@@ -80,8 +80,8 @@ module ietf-layer0-types {
        The nominal central wavelength is defined by:
          Wavelength = 1471 nm + N x channel-spacing (measured in nm)
 
-       where 1471 nm is the conventional 'anchor wavelength' for
-       transmission over the CWDM grid; and where 'channel-spacing' is
+       where 1471 nm is the ITU-T 'anchor wavelength' for
+       transmission over the C band; and where 'channel-spacing' is
        defined by the cwdm-ch-spc-type.";
     reference
       "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
@@ -100,7 +100,7 @@ module ietf-layer0-types {
          f = 193100.000 GHz + N x channel-spacing (measured in GHz),
 
        where 193100.000 GHz (193.100000 THz) is the ITU-T 'anchor 
-       frequency' for transmission over the DWDM grid; and where
+       frequency' for transmission over the C band; and where
        'channel-spacing' is defined by the flexi-ch-spc-type.
       
        Note that the term 'channel-spacing' can be alternated by the
