@@ -1,8 +1,7 @@
 module ietf-layer0-types {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-layer0-types";
-
-  prefix "l0-types";
+  prefix l0-types;
 
   organization
     "IETF CCAMP Working Group";
@@ -266,15 +265,15 @@ module ietf-layer0-types {
         "Label for DWDM or CWDM grid";
       case dwdm {
         leaf dwdm-n {
-          when 'derived-from-or-self(../../../grid-type,
-          "wson-grid-dwdm")'
+          when "derived-from-or-self(../../../grid-type,
+          "\wson-grid-dwdm\")"
           {
             description
               "Valid only when grid type is DWDM.";
           }
           type l0-types:dwdm-n;
           description
-           "The central frequency of DWDM.";
+            "The central frequency of DWDM.";
           reference
             "RFC6205: Generalized Labels for Lambda-Switch-Capable
              (LSC) Label Switching Routers";
@@ -282,8 +281,8 @@ module ietf-layer0-types {
       }
       case cwdm {
         leaf cwdm-n {
-          when 'derived-from-or-self(../../../grid-type,
-          "wson-grid-cwdm")'
+          when "derived-from-or-self(../../../grid-type,
+          "\wson-grid-cwdm\")"
           {
             description
               "Valid only when grid type is CWDM.";
@@ -310,7 +309,8 @@ module ietf-layer0-types {
         "Label for DWDM or CWDM grid";
       case dwdm {
         choice single-or-super-channel {
-          description "single or super channel";
+          description 
+            "single or super channel";
           case single {
             leaf dwdm-n {
               type l0-types:dwdm-n;
@@ -357,7 +357,8 @@ module ietf-layer0-types {
       type identityref {
         base l0-grid-type;
       }
-      description "Grid type";
+      description 
+        "Grid type";
     }
     leaf priority {
       type uint8;
@@ -374,14 +375,15 @@ module ietf-layer0-types {
   }
 
   grouping wson-label-step {
-    description "Label step information for WSON";
+    description 
+      "Label step information for WSON";
     choice l0-grid-type {
       description
         "Grid type: DWDM, CWDM, etc.";
       case dwdm {
         leaf wson-dwdm-channel-spacing {
-          when 'derived-from-or-self(../../grid-type,
-          "wson-grid-dwdm")'
+          when "derived-from-or-self(../../grid-type,
+          "\wson-grid-dwdm\")"
           {
             description
               "Valid only when grid type is DWDM.";
@@ -399,8 +401,8 @@ module ietf-layer0-types {
       }
       case cwdm {
         leaf wson-cwdm-channel-spacing {
-          when 'derived-from-or-self(../../grid-type,
-          "wson-grid-cwdm")'
+          when "derived-from-or-self(../../grid-type,
+          "\wson-grid-cwdm\")"
           {
             description
               "Valid only when grid type is CWDM.";
@@ -441,7 +443,8 @@ module ietf-layer0-types {
   }
 
   grouping flexi-grid-frequency-slot {
-    description "Flexi-grid frequency slot grouping.";
+    description 
+      "Flexi-grid frequency slot grouping.";
     uses flexi-grid-label-start-end;
     leaf flexi-m {
       type l0-types:flexi-m;
@@ -457,7 +460,6 @@ module ietf-layer0-types {
   grouping flexi-grid-label-hop {
     description
       "Generic label hop information for Flexi-grid";
-
     choice single-or-super-channel {
       description "single or super channel";
       case single {
@@ -465,7 +467,7 @@ module ietf-layer0-types {
       }
       case super {
         list subcarrier-flexi-n {
-          key flexi-n;
+          key "flexi-n";
           uses flexi-grid-frequency-slot;
           description
             "List of subcarrier channels for flexi-grid super
@@ -489,7 +491,7 @@ module ietf-layer0-types {
         type identityref {
           base flexi-slot-width-granularity;
         }
-        default flexi-swg-12p5ghz;
+        default "flexi-swg-12p5ghz";
         description
           "Minimum space between slot widths. Default is 12.500
            GHz";
@@ -502,7 +504,7 @@ module ietf-layer0-types {
         type uint16 {
           range "1..max";
         }
-        default 1;
+        default "1";
         description
           "A multiplier of the slot width granularity, indicating
            the minimum slot width supported by an optical port.
@@ -550,7 +552,7 @@ module ietf-layer0-types {
       type identityref {
         base flexi-ch-spc-type;
       }
-      default flexi-ch-spc-6p25ghz;
+      default "flexi-ch-spc-6p25ghz";
       description
         "Label-step is the nominal central frequency granularity
          (GHz), e.g., 6.25 GHz";
