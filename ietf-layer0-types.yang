@@ -243,7 +243,7 @@ module ietf-layer0-types {
       "CWDM channel spacing type";
     reference
       "RFC6205: Generalized Labels for Lambda-Switch-Capable (LSC)
-	   Label Switching Routers,
+       Label Switching Routers,
        ITU-T G.694.2 (12/2003): Spectral grids for WDM applications:
        CWDM wavelength grid";
   }
@@ -266,7 +266,7 @@ module ietf-layer0-types {
       case dwdm {
         leaf dwdm-n {
           when "derived-from-or-self(../../../grid-type,
-          "\wson-grid-dwdm\")"
+          \"wson-grid-dwdm\")"
           {
             description
               "Valid only when grid type is DWDM.";
@@ -282,7 +282,7 @@ module ietf-layer0-types {
       case cwdm {
         leaf cwdm-n {
           when "derived-from-or-self(../../../grid-type,
-          "\wson-grid-cwdm\")"
+          \"wson-grid-cwdm\")"
           {
             description
               "Valid only when grid type is CWDM.";
@@ -383,7 +383,7 @@ module ietf-layer0-types {
       case dwdm {
         leaf wson-dwdm-channel-spacing {
           when "derived-from-or-self(../../grid-type,
-          "\wson-grid-dwdm\")"
+          \"wson-grid-dwdm\")"
           {
             description
               "Valid only when grid type is DWDM.";
@@ -402,7 +402,7 @@ module ietf-layer0-types {
       case cwdm {
         leaf wson-cwdm-channel-spacing {
           when "derived-from-or-self(../../grid-type,
-          "\wson-grid-cwdm\")"
+          \"wson-grid-cwdm\")"
           {
             description
               "Valid only when grid type is CWDM.";
